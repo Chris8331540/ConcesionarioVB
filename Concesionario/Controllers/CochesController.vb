@@ -6,13 +6,30 @@ Imports System.Linq
 Imports System.Net
 Imports System.Web
 Imports System.Web.Mvc
+Imports System.Web.Services.Description
 Imports Concesionario
+Imports Unity
 
 Namespace Controllers
     Public Class CochesController
         Inherits System.Web.Mvc.Controller
 
         Private db As New MyDbContext
+        Private _servicioCsv As ICSVManagement
+
+        Protected Overrides Sub Initialize(requestContext As RequestContext)
+            MyBase.Initialize(requestContext)
+
+            ' Recupera el contenedor Unity desde el contenedor global
+            Dim container As UnityContainer = CType(HttpContext.Application("UnityContainer"), UnityContainer)
+
+            ' Resuelve la dependencia ICSVManagement utilizando el contenedor Unity
+            _servicioCsv = container.Resolve(Of ICSVManagement)()
+        End Sub
+        'Public Sub New(servicioCsv As ICSVManagement)
+        '    _servicioCsv = servicioCsv
+        '    db = New MyDbContext()
+        'End Sub
 
         ' GET: Coches
         Function Index() As ActionResult
@@ -105,5 +122,28 @@ Namespace Controllers
             End If
             MyBase.Dispose(disposing)
         End Sub
+
+        Function SubirCSV() As ActionResult
+            ViewData("Message") = "Sube tu CSV"
+            Dim mensaje As String = TempData("mensaje")?.ToString()
+            ViewBag.Mensaje = mensaje
+            Return View()
+        End Function
+
+        <HttpPost>
+        Function SubirCSVPost(archivoCSV As HttpPostedFileBase) As ActionResult
+            Dim resultado As Boolean = _servicioCsv.SubirFicheroBD(archivoCSV)
+            Dim mensaje As String
+            If resultado Then
+                mensaje = "Se han subido correctamente todos los registros."
+            Else
+                mensaje = "Ha ocurrido un error al subir los registros."
+            End If
+            TempData("mensaje") = mensaje
+            Return RedirectToAction("SubirCSV")
+        End Function
+        Function Crud() As ActionResult
+            Return RedirectToAction("Index")
+        End Function
     End Class
 End Namespace

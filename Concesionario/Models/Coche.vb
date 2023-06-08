@@ -4,7 +4,7 @@
     Public Property Model As String
     Public Property Price As Double
     Public Property Engine As String
-    Public Property Year As DateTime
+    Public Property Year As String
 
     Public Property Mileage As Double
     Public Property Fuel As FuelType
@@ -14,10 +14,13 @@
     Public Enum FuelType
         Gasolina
         Diésel
+        Híbrido
+        GLP
+        Eléctrico
     End Enum
 
     Public Enum GearBoxType
         Manual
-        Automática
+        Automatica
     End Enum
 End Class

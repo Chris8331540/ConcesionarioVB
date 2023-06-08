@@ -16,4 +16,12 @@
 
         Return View()
     End Function
+
+    Function SubirCSV() As ActionResult
+        Return RedirectToAction("SubirCSV", "Coches")
+    End Function
+
+    Function Crud() As ActionResult
+        Return RedirectToAction("Crud", "Coches")
+    End Function
 End Class
