@@ -9,6 +9,8 @@ Imports System.Web.Mvc
 Imports System.Web.Services.Description
 Imports Concesionario
 Imports Unity
+Imports Rotativa
+Imports Rotativa.AspNetCore
 
 Namespace Controllers
     Public Class CochesController
@@ -45,7 +47,10 @@ Namespace Controllers
             If IsNothing(coche) Then
                 Return HttpNotFound()
             End If
-            Return View(coche)
+            Dim pdf = New ViewAsPdf("Details", coche) With {
+                    .FileName = "Informe" + coche.Id.ToString + ".pdf"
+            }
+            Return pdf
         End Function
 
         ' GET: Coches/Create
@@ -132,6 +137,10 @@ Namespace Controllers
 
         <HttpPost>
         Function SubirCSVPost(archivoCSV As HttpPostedFileBase) As ActionResult
+            If (archivoCSV Is Nothing) Then
+                TempData("mensaje") = "No se ha seleccionado ningún archivo CSV"
+                Return RedirectToAction("SubirCSV")
+            End If
             Dim resultado As Boolean = _servicioCsv.SubirFicheroBD(archivoCSV)
             Dim mensaje As String
             If resultado Then

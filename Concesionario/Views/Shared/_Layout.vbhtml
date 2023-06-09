@@ -11,7 +11,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 </head>
-<body class="vh-100">
+<body class="">
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
             @Html.ActionLink("Concesionario", "Index", "Home", New With {.area = ""}, New With {.class = "navbar-brand"})
@@ -32,7 +32,7 @@
         @RenderBody()
     </div>
     <hr />
-    <footer class="mb-5">
+    <footer class="text-center">
         <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
     </footer>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>

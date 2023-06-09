@@ -2,6 +2,7 @@ Imports System.ComponentModel
 Imports System.Web.Mvc
 Imports System.Web.Optimization
 Imports System.Web.Routing
+Imports Rotativa.AspNetCore
 Imports Unity
 
 Public Class MvcApplication
@@ -24,5 +25,6 @@ Public Class MvcApplication
 
         ' Registra el contenedor Unity en la propiedad Application para poder acceder a él en otras partes de la aplicación
         Application("UnityContainer") = container
+
     End Sub
 End Class

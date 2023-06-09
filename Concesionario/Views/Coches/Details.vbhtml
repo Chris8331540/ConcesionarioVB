@@ -1,89 +1,134 @@
 ﻿@ModelType Concesionario.Coche
 @Code
     ViewData("Title") = "Details"
+    Layout = Nothing
 End Code
-
-<h2>Details</h2>
-
-<div>
-    <h4>Coche</h4>
+<div">
+    <h3 class="text-center">Detalles del coche</h3>
+    <h3 class="text-center">@Html.DisplayNameFor(Function(model) model.Brand): @Html.DisplayFor(Function(model) model.Brand)</h3>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.Brand)
-        </dt>
+    <div style="text-align:center">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong>@Html.DisplayNameFor(Function(model) model.Model)</strong>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(model) model.Model)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>@Html.DisplayNameFor(Function(model) model.Price)</strong>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(model) model.Price)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>@Html.DisplayNameFor(Function(model) model.Engine)</strong>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(model) model.Engine)
+                    </td>
+                </tr>
 
-        <dd>
-            @Html.DisplayFor(Function(model) model.Brand)
-        </dd>
+                <tr>
+                    <td>
+                        <strong>@Html.DisplayNameFor(Function(model) model.Year)</strong>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(model) model.Year)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>@Html.DisplayNameFor(Function(model) model.Mileage)</strong>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(model) model.Mileage)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>@Html.DisplayNameFor(Function(model) model.Fuel)</strong>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(model) model.Fuel)
+                    </td>
+                </tr>
 
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.Model)
-        </dt>
+                <tr>
+                    <td>
+                        <strong>@Html.DisplayNameFor(Function(model) model.GearBox)</strong>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(model) model.GearBox)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>@Html.DisplayNameFor(Function(model) model.Location)</strong>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(Function(model) model.Location)
+                    </td>
+                </tr>
 
-        <dd>
-            @Html.DisplayFor(Function(model) model.Model)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.Engine)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.Engine)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.Year)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.Year)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.Mileage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.Mileage)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.Fuel)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.Fuel)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.GearBox)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.GearBox)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.Location)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.Location)
-        </dd>
-
-    </dl>
+            </tbody>
+        </table>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", New With { .id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<style>
+    table {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+    }
+</style>
+@*<div>
+
+        <h2>@Html.DisplayNameFor(Function(model) model.Brand): @Html.DisplayFor(Function(model) model.Brand)</h2>
+        <hr />
+
+        <div class="mb-5">
+            <strong>@Html.DisplayNameFor(Function(model) model.Model): </strong>@Html.DisplayFor(Function(model) model.Model)
+        </div>
+
+        <div class="mb-5">
+            <strong>@Html.DisplayNameFor(Function(model) model.Price): </strong>@Html.DisplayFor(Function(model) model.Price)
+        </div>
+
+        <div class="mb-5">
+            <strong>@Html.DisplayNameFor(Function(model) model.Engine): </strong>@Html.DisplayFor(Function(model) model.Engine)
+        </div>
+
+        <div class="mb-5">
+            <strong>@Html.DisplayNameFor(Function(model) model.Year): </strong>@Html.DisplayFor(Function(model) model.Year)
+        </div>
+
+        <div class="mb-5">
+            <strong>@Html.DisplayNameFor(Function(model) model.Mileage): </strong>  @Html.DisplayFor(Function(model) model.Mileage)
+        </div>
+
+        <div class="mb-5">
+            <strong>@Html.DisplayNameFor(Function(model) model.Fuel): </strong>@Html.DisplayFor(Function(model) model.Fuel)
+        </div>
+
+        <div class="mb-5">
+            <strong>@Html.DisplayNameFor(Function(model) model.GearBox): </strong>@Html.DisplayFor(Function(model) model.GearBox)
+        </div>
+
+
+        <div class="mb-5">
+            <strong>@Html.DisplayNameFor(Function(model) model.Location): </strong> @Html.DisplayFor(Function(model) model.Location)
+        </div>
+
+    </div>*@

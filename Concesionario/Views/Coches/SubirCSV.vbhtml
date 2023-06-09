@@ -8,7 +8,9 @@ End Code
     <h2>Sube la información de tu fichero csv a la base de datos</h2>
     <form action="/Coches/SubirCSVPost" method="post" enctype="multipart/form-data">
         <div class="row mb-3">
-            <input type="file" accept=".csv" name="archivoCSV" />
+            <div class="col-md-2">
+                <input type="file" accept=".csv" name="archivoCSV" />
+            </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-2">
