@@ -4,50 +4,50 @@
     Layout = Nothing
 End Code
 <div>
-    <h1 class="text-center">Detalles del coche</h1>
-    <h2 style="margin-bottom:0px">@Html.DisplayNameFor(Function(model) model.Brand)</h2>
+    <h1>Detalles del coche</h1>
+    <h2 style="margin-bottom:0px;">@Html.DisplayNameFor(Function(model) model.Brand)</h2>
     <hr />
-    <p class="text-center">@Html.DisplayFor(Function(model) model.Brand)</p>
+    <p style="text-align:center">@Html.DisplayFor(Function(model) model.Brand)</p>
     <br />
 
     <h2 style="margin-bottom:0px">@Html.DisplayNameFor(Function(model) model.Model)</h2>
     <hr />
-    <p>@Html.DisplayFor(Function(model) model.Model)</p>
+    <p style="text-align:center">@Html.DisplayFor(Function(model) model.Model)</p>
     <br />
 
     <h2 style="margin-bottom:0px">@Html.DisplayNameFor(Function(model) model.Price)</h2>
     <hr />
-    <p>@Html.DisplayFor(Function(model) model.Price)</p>
+    <p style="text-align:center">@Html.DisplayFor(Function(model) model.Price)</p>
     <br />
 
     <h2 style="margin-bottom:0px">@Html.DisplayNameFor(Function(model) model.Engine)</h2>
     <hr />
-    <p>@Html.DisplayFor(Function(model) model.Engine)</p>
+    <p style="text-align:center">@Html.DisplayFor(Function(model) model.Engine)</p>
     <br />
 
     <h2 style="margin-bottom:0px">@Html.DisplayNameFor(Function(model) model.Year)</h2>
     <hr />
-    <p>@Html.DisplayFor(Function(model) model.Year)</p>
+    <p style="text-align:center">@Html.DisplayFor(Function(model) model.Year)</p>
     <br />
 
     <h2 style="margin-bottom:0px">@Html.DisplayNameFor(Function(model) model.Mileage)</h2>
     <hr />
-    <p>@Html.DisplayFor(Function(model) model.Mileage)</p>
+    <p style="text-align:center">@Html.DisplayFor(Function(model) model.Mileage)</p>
     <br />
 
     <h2 style="margin-bottom:0px">@Html.DisplayNameFor(Function(model) model.Fuel)</h2>
     <hr />
-    <p>@Html.DisplayFor(Function(model) model.Fuel)</p>
+    <p style="text-align:center">@Html.DisplayFor(Function(model) model.Fuel)</p>
     <br />
 
     <h2 style="margin-bottom:0px">@Html.DisplayNameFor(Function(model) model.GearBox)</h2>
     <hr />
-    <p>@Html.DisplayFor(Function(model) model.GearBox)</p>
+    <p style="text-align:center">@Html.DisplayFor(Function(model) model.GearBox)</p>
     <br />
 
     <h2 style="margin-bottom:0px">@Html.DisplayNameFor(Function(model) model.Location)</h2>
     <hr />
-    <p>@Html.DisplayFor(Function(model) model.Location)</p>
+    <p style="text-align:center">@Html.DisplayFor(Function(model) model.Location)</p>
     <br />
 
 </div>
