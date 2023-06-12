@@ -3,9 +3,9 @@
     ViewData("Title") = "Delete"
 End Code
 
-<h2>Delete</h2>
+<h2>Borrar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Estás seguro de que deseas borrar este registro?</h3>
 <div>
     <h4>Coche</h4>
     <hr />
@@ -85,10 +85,20 @@ End Code
     </dl>
     @Using (Html.BeginForm())
         @Html.AntiForgeryToken()
-
-        @<div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        @<div class="row mb-3">
+            <div class="col-2">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 ">
+                        <input type="submit" value="Borrar" class="btn btn-outline-dark" />
+                    </div>
+                </div>
+            </div>
         </div>
+        @<div class="row mb-3">
+            <div class="col-2">
+                <a class="btn btn-outline-dark" href="/Coches/Index">Volver atrás</a>
+            </div>
+        </div>
+
     End Using
 </div>

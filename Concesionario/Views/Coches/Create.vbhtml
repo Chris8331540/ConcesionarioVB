@@ -3,7 +3,7 @@
     ViewData("Title") = "Create"
 End Code
 
-<h2>Create</h2>
+<h2>Crear</h2>
 
 @Using (Html.BeginForm())
     @Html.AntiForgeryToken()
@@ -91,16 +91,26 @@ End Code
 
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        <div class="row mb-3">
+            <div class="col-2">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 ">
+                        <input type="submit" value="Crear" class="btn btn-outline-dark" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row mb-3">
+            <div class="col-2">
+                <a class="btn btn-outline-dark" href="/Coches/Index">Volver atrás</a>
+
             </div>
         </div>
-    </div>  End Using
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    </div>End Using
+
+
 
 @Section Scripts
     @Scripts.Render("~/bundles/jqueryval")

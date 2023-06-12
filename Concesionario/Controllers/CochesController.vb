@@ -18,6 +18,7 @@ Namespace Controllers
 
         Private db As New MyDbContext
         Private _servicioCsv As ICSVManagement
+        Private _servicioCoches As ICochesServicios
 
         Protected Overrides Sub Initialize(requestContext As RequestContext)
             MyBase.Initialize(requestContext)
@@ -27,15 +28,13 @@ Namespace Controllers
 
             ' Resuelve la dependencia ICSVManagement utilizando el contenedor Unity
             _servicioCsv = container.Resolve(Of ICSVManagement)()
+            _servicioCoches = container.Resolve(Of ICochesServicios)()
         End Sub
-        'Public Sub New(servicioCsv As ICSVManagement)
-        '    _servicioCsv = servicioCsv
-        '    db = New MyDbContext()
-        'End Sub
 
         ' GET: Coches
         Function Index() As ActionResult
-            Return View(db.Coches.ToList())
+            Dim listaCoches As List(Of Coche) = _servicioCoches.ObtenerListaCoches()
+            Return View(listaCoches)
         End Function
 
         ' GET: Coches/Details/5
@@ -43,13 +42,11 @@ Namespace Controllers
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim coche As Coche = db.Coches.Find(id)
+            Dim coche As Coche = _servicioCoches.ObtenerCochePorId(id)
             If IsNothing(coche) Then
                 Return HttpNotFound()
             End If
-            Dim pdf = New ViewAsPdf("Details", coche) With {
-                    .FileName = "Informe" + coche.Id.ToString + ".pdf"
-            }
+            Dim pdf = _servicioCoches.ObtenerInforme(coche)
             Return pdf
         End Function
 
@@ -65,8 +62,7 @@ Namespace Controllers
         <ValidateAntiForgeryToken()>
         Function Create(<Bind(Include:="Id,Brand,Model,Price,Engine,Year,Mileage,Fuel,GearBox,Location")> ByVal coche As Coche) As ActionResult
             If ModelState.IsValid Then
-                db.Coches.Add(coche)
-                db.SaveChanges()
+                _servicioCoches.AgregarCoche(coche)
                 Return RedirectToAction("Index")
             End If
             Return View(coche)
@@ -77,7 +73,7 @@ Namespace Controllers
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim coche As Coche = db.Coches.Find(id)
+            Dim coche As Coche = _servicioCoches.ObtenerCochePorId(id)
             If IsNothing(coche) Then
                 Return HttpNotFound()
             End If
@@ -91,8 +87,7 @@ Namespace Controllers
         <ValidateAntiForgeryToken()>
         Function Edit(<Bind(Include:="Id,Brand,Model,Price,Engine,Year,Mileage,Fuel,GearBox,Location")> ByVal coche As Coche) As ActionResult
             If ModelState.IsValid Then
-                db.Entry(coche).State = EntityState.Modified
-                db.SaveChanges()
+                _servicioCoches.ModificarCoche(coche)
                 Return RedirectToAction("Index")
             End If
             Return View(coche)
@@ -103,7 +98,7 @@ Namespace Controllers
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim coche As Coche = db.Coches.Find(id)
+            Dim coche As Coche = _servicioCoches.ObtenerCochePorId(id)
             If IsNothing(coche) Then
                 Return HttpNotFound()
             End If
@@ -115,9 +110,8 @@ Namespace Controllers
         <ActionName("Delete")>
         <ValidateAntiForgeryToken()>
         Function DeleteConfirmed(ByVal id As Integer) As ActionResult
-            Dim coche As Coche = db.Coches.Find(id)
-            db.Coches.Remove(coche)
-            db.SaveChanges()
+            Dim coche As Coche = _servicioCoches.ObtenerCochePorId(id)
+            _servicioCoches.BorrarCoche(coche)
             Return RedirectToAction("Index")
         End Function
 

@@ -628,7 +628,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Controllers\HomeController.vb" />
+    <Compile Include="Servicios\CochesServicios.vb" />
     <Compile Include="Servicios\CSVManagement.vb" />
+    <Compile Include="Servicios\ICochesServicios.vb" />
     <Compile Include="Servicios\ICSVManagement.vb" />
   </ItemGroup>
   <ItemGroup>

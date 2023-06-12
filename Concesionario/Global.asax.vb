@@ -15,13 +15,14 @@ Public Class MvcApplication
         RouteConfig.RegisterRoutes(RouteTable.Routes)
         BundleConfig.RegisterBundles(BundleTable.Bundles)
 
-        ' Configurar la inyección de dependencias
+        ' Configurar la inyección de dependencias para el dbContext
         DependencyResolver.SetResolver(DependencyResolver.Current)
 
         Dim container As New UnityContainer()
 
         ' Registra las dependencias en el contenedor Unity
         container.RegisterType(Of ICSVManagement, CSVManagement)()
+        container.RegisterType(Of ICochesServicios, CochesServicios)()
 
         ' Registra el contenedor Unity en la propiedad Application para poder acceder a él en otras partes de la aplicación
         Application("UnityContainer") = container
